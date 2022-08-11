@@ -14,8 +14,25 @@ elForm.addEventListener("submit", function(evt) {
     let temperatureKelvin;
     let temperatureFarengeyt;
 
-
-    if (selectValue === "kelvin") {
+    if (isNaN(inputValue) && selectValue === "") {
+        elTemperature[0].textContent = "";
+        elTemperature[1].textContent = "";
+        elTemperature[2].textContent = "";
+        alert("Iltimos faqat raqam kiriting va harorat shkalalaridan birin ham tanlang")
+    }
+    else if (isNaN(inputValue)) {
+        elTemperature[0].textContent = "";
+        elTemperature[1].textContent = "";
+        elTemperature[2].textContent = "";
+        alert("Iltimos faqat raqam kiriting")
+    }
+    else if (selectValue === "") {
+        elTemperature[0].textContent = "";
+        elTemperature[1].textContent = "";
+        elTemperature[2].textContent = "";
+       alert("Iltimos harorat shkalalaridan birin tanlang")
+    }  
+    else if (selectValue === "kelvin") {
         temperatureTselsy = (inputValue - 273.15).toFixed(2);
         temperatureFarengeyt = ((inputValue * 1.8) - 459.67).toFixed(2);
         temperatureKelvin = inputValue;
@@ -39,12 +56,6 @@ elForm.addEventListener("submit", function(evt) {
         elTemperature[1].textContent = temperatureTselsy + " ° C";
         elTemperature[2].textContent = temperatureFarengeyt + " °F";
     }
-    else if (isNaN(inputValue) && selectValue === "") {
-        alert("Iltimos faqat raqam kiriting va harorat shkalalaridan birin ham tanlang")
-    }
-    else if (selectValue === "") {
-       alert("Iltimos harorat shkalalaridan birin tanlang")
-    }  
 
     elFormInput.value = "";
     elFormSelect.value = "";
